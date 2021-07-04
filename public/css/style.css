@@ -1,0 +1,115 @@
+/*
+Student: Joao Victor Fernandes dos Santos
+StudentId: jvfernandes-dos-sant
+Student Numbeer: 155858194
+Course: WEB 322 
+Professor: George Kougioumtzoglou
+*/
+*{
+  margin: 0;
+  padding: 0;
+}
+.logo{
+    height: 70px;
+    width: auto;
+}
+
+.social{
+    height: 35px;
+    width: auto;
+    margin: 8px 20px;
+}
+.footer {
+    left: 0;
+    bottom: 0;
+    height: 5%;
+    width: 100%;
+    background-color: #383c44;
+    color: white;
+    display: inline-block;
+    text-align: center;
+  }
+  #footer {
+    left: 0;
+    bottom: 0;
+    height: 5%;
+    width: 100%;
+    background-color: #383c44;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    position: fixed;
+  }
+  .hero-text{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 110px;
+    color: white;
+  }
+  .video-text{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 50px;
+    color: white;
+    justify-content: center;
+    text-align: center;
+  }
+  .room-image{
+    height: 300px;
+    width: auto;
+    border-radius: 2%;
+  }
+  .section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;   
+  }
+  .first{
+    background-image: url('/images/hero.jpg');
+    width: 100%;
+    height: 100vh;
+  }
+  .second{
+    background-image: url('/images/hero-2.jpeg');
+    width: 100%;
+    height: 100%;
+  }
+  body{
+    height: 100vh;
+    width: 100%;
+  }
+  .form{
+    background-color: white;
+    width: 320px;
+    padding: 20px 20px;
+    height: auto;
+    display: block;
+    margin:auto;
+    border-radius: 3%;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+  }
+  .form-register{
+    background-color: white;
+    width: 320px;
+    height: auto;
+    padding: 20px 20px;
+    display: block;
+    margin:auto;
+    border-radius: 3%;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+  }
+  .form-login{
+    background-color: white;
+    width: 250px;
+    height: auto;
+    padding: 20px 20px;
+    display: block;
+    margin:auto;
+    border-radius: 3%;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+  }

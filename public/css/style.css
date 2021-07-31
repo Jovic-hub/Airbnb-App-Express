@@ -42,7 +42,7 @@ Professor: George Kougioumtzoglou
   }
   .hero-text{
     font-family: 'Nunito Sans', sans-serif;
-    font-size: 110px;
+    font-size: 7rem;
     color: white;
   }
   .video-text{
@@ -112,4 +112,8 @@ Professor: George Kougioumtzoglou
     border-radius: 3%;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: bold;
+  }
+  .error{
+    background-color: red;
+    margin-bottom: 10px;
   }

@@ -18,7 +18,7 @@ var exphbs = require('express-handlebars')
 var PORT = process.env.PORT || 8080;
 require("dotenv").config()
 
-var User = require("./controllers/user.js");
+var User = require('./models/user');
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

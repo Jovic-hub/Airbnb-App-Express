@@ -41,51 +41,39 @@ Professor: George Kougioumtzoglou
           </ul>
         </div>
       </nav><br><br>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">
-            <img class = "room-image" src = "/images/first_room.jpg">
-            <h4 class = "title">Bedroom</h4>
-            <p class = "price">$156 CAD/night</p>
-          </div>
-          <div class="col-sm">
-            <img class = "room-image" src = "/images/second_room.jpg">
-            <h4 class = "title">Comfort Bedroom</h4>
-            <p class = "price">$156 CAD/night</p>
-          </div>
-          <div class="col-sm">
-            <img class = "room-image" src = "/images/third_room.jpg">
-            <h4 class = "title">Nature Bedroom</h4>
-            <p class = "price">$192 CAD/night</p>
-          </div>
-        </div>
-      </div>
-      {{#unless logged}}
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">
-            <img class = "room-image" src = "/images/fifth_room.jpg">
-            <h4 class = "title">Double Bed Bedroom</h4>
-            <p class = "price">$216 CAD/night</p>
-          </div>
-          <div class="col-sm">
-            <img class = "room-image" src = "/images/fourth_room.jpg">
-            <h4 class = "title">City Downtown Bedroom</h4>
-            <p class = "price">$226 CAD/night</p>
-          </div>
-          <div class="col-sm">
-            <img class = "room-image" src = "/images/sixth_room.jpg">
-            <h4 class = "title">Simple Bedroom</h4>
-            <p class = "price">$132 CAD/night</p>
-          </div>
-        </div>
-      </div>
-      {{else}}
-      <br>
+
       <center>
-        <h3 style="color:black;">Please Login or Register to see all the rooms available<br> <a href="/login">Login<br><a href="/register">Register</a> </h3>
-      </center>
+      {{#unless logged}}
+      <a style="margin-right: 50%; padding: 10px; font-weight: bold; background-color: salmon; cursor: pointer; color: inherit; border-style: solid;" href="/new_room">Add new room.</a>
+      <br><br>
+      {{else}}
+      <a style="font-size: 22px;">To interact, or add new rooms you need to Login.</a><br><br>
       {{/unless}}
+      <div class = "error_rooms">
+        {{messages.error}}
+      </div>
+      <div style="font-size: 18px;">
+        {{messages.no_found}}<br>       
+        {{messages.currently}}
+        {{messages.list_available}}
+      </div><br>
+      </center>
+       <div class="container">
+        <div class="row">
+      {{#each list}}
+          <div class="col-sm">
+            <img class = "room-image" src = "/uploads/images/{{this.photo}}">
+            <h4 class = "title">Room Title: {{this.title}}</h4>
+            <p class = "price">Price: $ {{this.price}} CAD/night<br>Description: {{this.description}}<br><img src="/images/pin.png" style="width: 25px;">{{this.location}}</p>
+            <a class = "edit" href="/edit/{{this._id}}">Edit</a>
+            <form action="/delete/{{this._id}}?_method=DELETE" method="POST" style="display:inline">            
+            <button class = "delete">Delete</button>
+            </form>
+            <br><br><br><br><br>
+          </div>
+      {{/each}}
+        </div>
+      </div>
       <div id="footer">
         <a href="/rooms" style = "font-size: 22px; color:white; text-decoration: none; margin-right: 3%;">Rooms</a>
         <a href="/register" style = "font-size: 22px; color:white; text-decoration: none; margin-right: 3%;">Sign Up</a>

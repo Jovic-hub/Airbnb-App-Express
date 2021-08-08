@@ -20,17 +20,14 @@ const userSchema = mongoose.Schema({
     password:{ type:String, required:true }
 })
 
+userSchema.methods.comparePassword = function(txt, callback) {
+    return callback(null, bcrypt.compareSync(txt, this.password));
+};
+
 userSchema.pre("save", function(next) {
-    if(!this.isModified("password")) {
-        return next();
-    }
     this.password = bcrypt.hashSync(this.password, 10);
     next();
 });
-
-userSchema.methods.comparePassword = function(plaintext, callback) {
-    return callback(null, bcrypt.compareSync(plaintext, this.password));
-};
 
 const userModel = mongoose.model('users',userSchema)
 

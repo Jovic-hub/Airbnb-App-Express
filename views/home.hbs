@@ -47,20 +47,25 @@ Professor: George Kougioumtzoglou
       </nav>
       <section class = "first">
         <br><br>
-        <form class ="form" onsubmit="console.log('form Submitted'); return false;">
+        <center>
+        <div class = "succ">
+            {{messages.succ}}
+        </div>
+        </center>
+        <form class ="form" method="POST" action ="form-search" >
           <table>
             <tbody>
               <tr>
                 <td>
-                  <label for="where">WHERE</label><br>
-                  <input style="width:100%;" id="where" type="text" placeholder="Anywhere"/>
+                  <label for="where">WHERE (city)</label><br>
+                  <input style="width:100%;" name ="where" id="where" type="text" placeholder="Anywhere"/>
                   <br><br>
                   <label for="in">CHECK-IN</label>
-                  <input type = "date" id ="in"><br>
+                  <input type = "date" name = "in" id ="in"><br>
                   <label for="out">CHECK-OUT</label>
-                  <input type = "date" id ="out"><br><br>
+                  <input type = "date" name = "out" id ="out"><br><br>
                   <label for = "guests">GUESTS</label><br>
-                  <select style="width: 100%;" id = "guests">
+                  <select style="width: 100%;" name = "guests" id = "guests">
                     <option value = "one_guest">1 Guest</option>
                     <option value = "two_guest">2 Guests</option>
                     <option value = "three_guest">3 Guests</option>

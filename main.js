@@ -189,6 +189,50 @@ app.get('/edit/:id', async (req, res)=>{
     }
   }
 });
+
+app.get('/view/:id', async(req,res)=>{
+  if(req.session.user == undefined){
+    req.flash('error', 'Please, log-in first to try to interact with edit, delete or view it');
+    res.redirect('/rooms')
+  }else{   
+    let room = await Room.findById(req.params.id)
+    res.render('book', {docs:room})
+    app.post('/price', (req,res)=>{
+      console.log(req.body.in)
+      console.log(req.body.out)
+      var date1 = new Date(req.body.in);
+      var date2 = new Date(req.body.out);
+      var Difference_In_Time = date2.getTime() - date1.getTime();
+      var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      var final_price = Difference_In_Days * room.price
+      var datee1 = req.body.in
+      var datee2 = req.body.out
+      res.render('book', {docs:room, price:final_price})
+      app.post('/book-send', (req, res) => {
+        console.log(req.session.user.username)
+        let transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.USER,
+            pass: process.env.PASS
+          }
+        });     
+        let mailOptions  = {
+          from: 'web322joaovictor@gmail.com',
+          to: req.session.user.username,
+          subject: 'Booking Confirmation',
+          text: 'Thanks for booking the Room: ' + room.title +'\n' + 'Final price: $'+ final_price + '\n'
+        }      
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+              return console.log(error);
+          }else{
+            res.render(__dirname+'/views/confirmation.hbs', {name: req.session.user.username, in: datee1, out:datee2, price:final_price, docs: room});
+          }
+      })});  
+    });  
+  }
+})
 app.put('/edit_form/:id', async (req,res)=>{
   let room = await Room.findById(req.params.id)
   console.log(room)
@@ -206,10 +250,11 @@ app.put('/edit_form/:id', async (req,res)=>{
     console.log(err);
   }
 })
+
 app.delete('/delete/:id', async (req, res) =>{
   let room = await Room.findById(req.params.id)
   if(req.session.user == undefined){
-    req.flash('error', 'Please, log-in first to try to interact with edit and delete.');
+    req.flash('error', 'Please, log-in first to try to interact with edit, delete or view it');
     res.redirect('/rooms')
   }else{
     if(room.email == req.session.user.username){

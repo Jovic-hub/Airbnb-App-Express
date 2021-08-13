@@ -41,40 +41,13 @@ Professor: George Kougioumtzoglou
           </ul>
         </div>
       </nav><br><br>
-
       <center>
-      {{#unless logged}}
-      <a style="margin-right: 50%; padding: 10px; font-weight: bold; background-color: salmon; cursor: pointer; color: inherit; border-style: solid;" href="/new_room">Add new room.</a>
-      <br><br>
-      {{else}}
-      <a style="font-size: 22px;">To interact, or add new rooms you need to Login.</a><br><br>
-      {{/unless}}
-      <div class = "error_rooms">
-        {{messages.error}}
-      </div>
-      <div style="font-size: 18px;">
-        {{messages.no_found}}<br>       
-        {{messages.currently}}
-        {{messages.list_available}}
-      </div><br>
+        <h5 class = "hero-text" style="color:black;">Booking Confirmation<br></h7>
+        <h5>Details: <br><a>Check in: {{in}} Check out: {{out}} <br> User: {{name}} <br> Price: {{price}}</a></h5>
+        <img class = "room-image-view" src = "/uploads/images/{{docs.photo}}">
+        <h4 class = "title-view">Room Title: {{docs.title}}</h4>
       </center>
-       <div class="container">
-        <div class="row">
-      {{#each list}}
-          <div class="col-sm">
-            <img class = "room-image" src = "/uploads/images/{{this.photo}}">
-            <h4 class = "title">Room Title: {{this.title}}</h4>
-            <p class = "price">Price: $ {{this.price}} CAD/night<br>Description: {{this.description}}<br><img src="/images/pin.png" style="width: 25px;">{{this.location}}</p>
-            <a class = "edit" href="/edit/{{this._id}}">Edit</a>
-            <form action="/delete/{{this._id}}?_method=DELETE" method="POST" style="display:inline">            
-            <button class = "delete">Delete</button>
-            <a class = "book" href="/view/{{this._id}}">Book</a>
-            </form>
-            <br><br><br><br><br>
-          </div>
-      {{/each}}
-        </div>
-      </div>
+
       <div id="footer">
         <a href="/rooms" style = "font-size: 22px; color:white; text-decoration: none; margin-right: 3%;">Rooms</a>
         <a href="/register" style = "font-size: 22px; color:white; text-decoration: none; margin-right: 3%;">Sign Up</a>

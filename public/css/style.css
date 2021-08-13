@@ -57,6 +57,11 @@ Professor: George Kougioumtzoglou
     width: 20rem;
     border-radius: 2%;
   }
+  .room-image-view{
+    height: 30rem;
+    width: auto;
+    border-radius: 1%;
+  }
   .section{
     display: flex;
     flex-direction: column;
@@ -120,6 +125,9 @@ Professor: George Kougioumtzoglou
   .price{
     font-size: 19px;
   }
+  .price-view{
+    font-size: 25px;
+  }
   .succ{
     font-size: 2.5rem;
     background-color: green;
@@ -142,5 +150,13 @@ Professor: George Kougioumtzoglou
     font-size: 1.65rem;
     margin-right: 5px;
     background-color: rgb(241, 175, 53);
+    color: inherit;
+  }
+  .book{
+    border-style: none;
+    padding:3px;
+    font-size: 1.65rem;
+    margin-right: 5px;
+    background-color: Salmon;
     color: inherit;
   }
